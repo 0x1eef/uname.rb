@@ -1,0 +1,8 @@
+*.so
+*.o
+*.lock
+Makefile
+tmp/
+pkg/
+*~
+.yardoc/
