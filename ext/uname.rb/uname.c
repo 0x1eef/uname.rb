@@ -9,6 +9,7 @@ rb_uname(VALUE self)
   VALUE cUNIXName;
   int result, err;
 
+  errno = 0;
   result = uname(&name);
   if (result == 0) {
     cUNIXName = rb_const_get(rb_cObject, rb_intern("UNIXName"));
