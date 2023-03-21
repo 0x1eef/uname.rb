@@ -1,8 +1,8 @@
 ## About
 
 uname.rb is a C extension that provides a Ruby interface to
-[uname(3)](https://man.freebsd.org/cgi/man.cgi?query=unamef&sektion=3).
-[uname(3)](https://man.freebsd.org/cgi/man.cgi?query=unamef&sektion=3)
+[uname(3)](https://man.freebsd.org/cgi/man.cgi?query=uname&sektion=3).
+[uname(3)](https://man.freebsd.org/cgi/man.cgi?query=uname&sektion=3)
 returns a struct that contains the name of on operating system, a machine's
 network name, the release level of an operating system, the version level of
 an operating system, and the machine's hardware platform. It can be especially
