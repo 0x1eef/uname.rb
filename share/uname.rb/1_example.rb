@@ -1,5 +1,6 @@
 require "uname"
 name = Kernel.uname
+puts name.class
 puts name.sysname
 puts name.nodename
 puts name.release

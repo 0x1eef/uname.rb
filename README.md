@@ -20,6 +20,7 @@ where self inherits from Object. The following example was run on FreeBSD
 ```ruby
 require "uname"
 name = Kernel.uname
+puts name.class
 puts name.sysname
 puts name.nodename
 puts name.release
