@@ -2,12 +2,19 @@
 #include <sys/utsname.h>
 #include <errno.h>
 
+static int
+read_errno() {
+  int p_errno = errno;
+  errno = 0;
+  return p_errno;
+}
+
 static VALUE
 rb_uname(VALUE self)
 {
   struct utsname name;
   VALUE cUNIXName;
-  int result, err;
+  int result;
 
   errno = 0;
   result = uname(&name);
@@ -20,9 +27,7 @@ rb_uname(VALUE self)
       rb_str_new_cstr(name.machine)
     );
   } else {
-    err = errno;
-    errno = 0;
-    rb_syserr_fail(err, "uname");
+    rb_syserr_fail(read_errno(), "uname");
   }
 }
 
