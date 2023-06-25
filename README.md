@@ -6,7 +6,7 @@ uname.rb is a C extension that provides a Ruby interface to
 returns a struct that contains the name of on operating system, a machine's
 network name, the release level of an operating system, the version level of
 an operating system, and the machine's hardware platform. It can be especially
-helpful when there's a preference to not depend on the uname binary.
+helpful when there is a preference to not rely on the uname executable.
 
 ## Examples
 
