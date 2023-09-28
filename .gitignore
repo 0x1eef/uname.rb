@@ -6,3 +6,5 @@ tmp/
 pkg/
 *~
 .yardoc/
+.bundle/
+.gems
