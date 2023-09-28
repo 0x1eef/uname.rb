@@ -8,9 +8,7 @@ function populates a C struct that contains the name of on operating
 system, a machine's network name, the release level of an operating system,
 the version level of an operating system, and the machine's hardware platform.
 
-## Examples
-
-### FreeBSD
+## Example
 
 The "uname" method is implemented on Ruby's Kernel module, and it can be called
 with Kernel as an explicit receiver, or without an explicit receiver in contexts
