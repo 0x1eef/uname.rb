@@ -14,11 +14,11 @@ rb_uname(VALUE self)
 {
   struct utsname name;
   VALUE cUNIXName;
-  int result;
 
   errno = 0;
-  result = uname(&name);
-  if (result == 0) {
+  if (uname(&name)) {
+    rb_syserr_fail(read_errno(), "uname");
+  } else {
     cUNIXName = rb_const_get(rb_cObject, rb_intern("UNIXName"));
     return rb_funcall(
       cUNIXName, rb_intern("new"), 5,
@@ -26,8 +26,6 @@ rb_uname(VALUE self)
       rb_str_new_cstr(name.release), rb_str_new_cstr(name.version),
       rb_str_new_cstr(name.machine)
     );
-  } else {
-    rb_syserr_fail(read_errno(), "uname");
   }
 }
 
