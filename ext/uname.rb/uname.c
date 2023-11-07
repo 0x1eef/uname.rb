@@ -2,13 +2,6 @@
 #include <sys/utsname.h>
 #include <errno.h>
 
-static int
-read_errno() {
-  int p_errno = errno;
-  errno = 0;
-  return p_errno;
-}
-
 static VALUE
 rb_uname(VALUE self)
 {
@@ -16,8 +9,8 @@ rb_uname(VALUE self)
   VALUE cUNIXName;
 
   errno = 0;
-  if (uname(&name)) {
-    rb_syserr_fail(read_errno(), "uname");
+  if (uname(&name) == -1) {
+    rb_syserr_fail(errno, "uname");
   } else {
     cUNIXName = rb_const_get(rb_cObject, rb_intern("UNIXName"));
     return rb_funcall(
