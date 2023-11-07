@@ -1,5 +1,6 @@
+require "bundler/setup"
 require "rake/extensiontask"
-require "bundler/gem_tasks"
+require "rake/testtask"
 
 namespace :linters do
   desc "Run the C linter"
@@ -13,5 +14,12 @@ namespace :linters do
   end
 end
 
+Rake::TestTask.new do |t|
+  t.test_files = FileList['test/*_test.rb']
+  t.verbose = true
+  t.warning = false
+end
 Rake::ExtensionTask.new("uname.rb")
+
+task default: ["clobber", "compile", "test"]
 task lint: ["linters:c", "linters:ruby"]

@@ -9,4 +9,4 @@ require "mkmf"
   CONFIG[_1].sub!(/-g [a-zA-Z0-9]+/, "")
 end
 
-create_makefile "./uname/uname.rb"
+create_makefile "uname.rb"
