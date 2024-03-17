@@ -9,9 +9,7 @@ rb_uname(VALUE self)
   VALUE cUNIXName;
 
   errno = 0;
-  if (uname(&name) == -1) {
-    rb_syserr_fail(errno, "uname");
-  } else {
+  if (uname(&name) == 0) {
     cUNIXName = rb_const_get(rb_cObject, rb_intern("UNIXName"));
     return rb_funcall(
       cUNIXName, rb_intern("new"), 5,
@@ -19,6 +17,8 @@ rb_uname(VALUE self)
       rb_str_new_cstr(name.release), rb_str_new_cstr(name.version),
       rb_str_new_cstr(name.machine)
     );
+  } else {
+    rb_syserr_fail(errno, "uname");
   }
 }
 

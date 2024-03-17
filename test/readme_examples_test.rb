@@ -1,6 +1,6 @@
 require_relative "setup"
 class UNIXName::READMETest < Test::Unit::TestCase
-  include Test::Cmd
+  include Test::CmdMixin
 
   def test_number_of_stdout_lines
     assert_equal 6, lines.to_a.size
